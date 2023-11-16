@@ -15,21 +15,21 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\aaa\hello_cpp\Main.cpp">
+    <ClCompile Include="Main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\aaa\hello_cpp\Tool.cpp">
+    <ClCompile Include="Tool.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\aaa\hello_cpp\TwoEquation.cpp">
+    <ClCompile Include="TwoEquation.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\aaa\hello_cpp\Tool.h">
+    <ClInclude Include="Tool.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\aaa\hello_cpp\TwoEquation.h">
+    <ClInclude Include="TwoEquation.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

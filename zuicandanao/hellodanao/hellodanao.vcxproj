@@ -139,13 +139,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\aaa\hello_cpp\Main.cpp" />
-    <ClCompile Include="..\..\aaa\hello_cpp\Tool.cpp" />
-    <ClCompile Include="..\..\aaa\hello_cpp\TwoEquation.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Tool.cpp" />
+    <ClCompile Include="TwoEquation.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\aaa\hello_cpp\Tool.h" />
-    <ClInclude Include="..\..\aaa\hello_cpp\TwoEquation.h" />
+    <ClInclude Include="Tool.h" />
+    <ClInclude Include="TwoEquation.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
