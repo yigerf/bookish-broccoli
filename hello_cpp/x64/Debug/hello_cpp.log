@@ -1,3 +1,0 @@
-﻿  demo01.cpp
-D:\aaa_studies\Program\code\c\hello_cpp\hello_cpp\demo01.cpp(34,12): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
-  hello_cpp.vcxproj -> D:\aaa_studies\Program\code\c\hello_cpp\x64\Debug\hello_cpp.exe
