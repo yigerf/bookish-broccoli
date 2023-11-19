@@ -6,75 +6,108 @@
 #include <iostream>
 #include <sstream>
 #include "TwoEquation.h"
+#include "Tool.h"
 
 using namespace std;
 
 void fun();
+TwoEquation randEquation();
 
 int main()
 {
-	srand(time(0));
+	srand(time(0));		// 这里初始化随机数函数，不然不给用，别问我，去问本贾尼·斯特劳斯特卢普
 	//========================================================
 
 	fun();
 	system("pause");
 	//cin.get();
 	//cin.ignore();
-
 }
+
+
 
 void fun()
 {
-	TwoEquation equation;
+	TwoEquation equation = randEquation();
 	string inStrX1;
 	string inStrX2;
 
-	cout << "求你输入二元一次方程 " << equation.toEquationStr() << " 第一个解（只有一个解连续填两次相同值）（无解填“无解”，不考虑虚数解）：" << endl;
+	cout << "求你输入二元一次方程 " << equation.toString() << " 第一个解（只有一个解连续填两次相同值）（无解填“无解”，不考虑虚数解）：" << endl;
 	cin >> inStrX1;
-	if (equation.getFlag() && inStrX1 == "无解")		// 有解答无解，答错
+
+	if (inStrX1 == "无解")
 	{
-		cout << "你答错了，学习去，我帮你关机了" << endl;
-		return;
-	}
-	else if (inStrX1 == "无解")			// 无解答无解，答对
-	{
-		cout << "你真聪明" << endl;
+		TwoEquationRoot root;
+		if (equation.trySolving(root))
+		{
+			cout << "确实是无解" << endl;
+		}
+		else
+		{
+			cout << "其实这道题有解，只是你打错了，乖乖关机吧" << endl;
+		}
 		return;
 	}
 
-	cout << "求你输入二元一次方程 " << equation.toEquationStr() << " 第二个解（只有一个解连续填两次相同值）：" << endl;
+	cout << "求你输入二元一次方程 " << equation.toString() << " 第二个解（只有一个解连续填两次相同值）：" << endl;
 	cin >> inStrX2;
-
 	
-	// 获取用户输入的解
-	double inX1 = 0;
-	double inX2 = 0;
+	// 打包用户输入的解
+	double userX1 = 0;
+	double userX2 = 0;
 	try
 	{
-		double inX1 = stod(inStrX2);
-		double inX2 = stod(inStrX1);
+		userX1 = stod(inStrX2);
+		userX2 = stod(inStrX1);
 	}
 	catch (const std::exception&)
 	{
-		cerr << "请输入数字，或者”无解“，输错了就结束吧" << endl;
+		cerr << "请输入数字，或者”无解“，乱输入就关机吧！！" << endl;
 		return;
 	}
-	double x1 = equation.getX1();
-	double x2 = equation.getX2();
+	TwoEquationRoot root(userX1, userX2);
 
 	// 判断用户输入的两个解是否正确匹配		//这里逻辑有误，待修复
-	if ((abs(inX1 - x1) < 0.000005 && abs(inX2 - x2) < 0.000005) ||
-		(abs(inX2 - x1) < 0.000005 && abs(inX1 - x2) < 0.000005))
+	if (equation.trySolving(root))
 	{
-		// 答对
 		cout << "你真聪明" << endl;
-		return;
 	}
 	else
 	{
-		// 答错
-		cout << "你答错了，快去学习，我帮你关机了" << endl;
-		return;
+		cout << "你答错了，快去学习吧，我帮你关机了" << endl;
 	}
 
+}
+/// <summary>
+/// 随机分配 a b c 系数
+/// </summary>
+TwoEquation randEquation()
+{
+	double a, b, c;
+	a = getRand(1, 20);
+	b = getRand(1, 20);
+
+	double dice = getRand(1, 50);
+	double temp = b * b / (4 * a);
+
+	if (dice <= 2)
+	{
+		do
+		{
+			c = getRand(1, 20);
+		} while (c >= temp);			// 方程无解	0 < b ^ 2 - 4 a c => c < b ^ 2 / 4 a
+	}
+	else if (dice <= 40)
+	{
+		do
+		{
+			c = getRand(1, 20);
+		} while (c <= temp);			// 方程两个解	0 > b ^ 2 - 4 a c => c > b ^ 2 / 4 a
+	}
+	else
+	{
+		c = temp;						// 方程一个解	0 = b ^ 2 - 4 a c
+	}
+	TwoEquation equ(a, b, c);
+	return equ;
 }

@@ -1,6 +1,2 @@
-﻿  Main.cpp
-D:\aaa_studies\Program\code\c\zuicandanao\hellodanao\Main.cpp(16,12): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
-  Tool.cpp
-  TwoEquation.cpp
-  正在生成代码...
+﻿  TwoEquation.cpp
   hellodanao.vcxproj -> D:\aaa_studies\Program\code\c\zuicandanao\x64\Debug\hellodanao.exe

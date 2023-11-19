@@ -1,6 +1,7 @@
 
 #ifndef TWO_EQUATION_H
 #define TWO_EQUATION_H
+#include "TwoEquationRoot.h"
 
 using namespace std;
 
@@ -12,22 +13,21 @@ private:
 	double b;
 	double c;
 
-	// 方程是否有解
-	bool flag;
-
-	// 方程的两个根
-	double x1;
-	double x2;
+	// 方程的根
+	TwoEquationRoot root;
 
 public:
-	TwoEquation();
-	void init_param();
-	string toEquationStr();
-	bool getFlag();
+	TwoEquation(double a, double b, double c);
+
+	string toString();
+	bool trySolving(TwoEquationRoot root);
+
+	TwoEquationRoot getRoots();
+	bool getRealRootNum();
 	double getX1();
 	double getX2();
 
 private:
-	bool solving();
+	void solving();
 };
 #endif	// TWO_EQUATION_H

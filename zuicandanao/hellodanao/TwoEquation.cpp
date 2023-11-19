@@ -10,47 +10,20 @@
 
 using namespace std;
 
-TwoEquation::TwoEquation()
+TwoEquation::TwoEquation(double a, double b, double c)
 {
-	init_param();			// 初始化 a b c
+	// 初始化 a b c
+	this->a = a;
+	this->b = b;
+	this->c = c;
 	solving();				// 初始化 flag x1 x2
 }
 
-/// <summary>
-/// 随机分配 a b c 系数
-/// </summary>
-void TwoEquation::init_param()
-{
-	a = getRand(1, 20);
-	b = getRand(1, 20);
-
-	double dice = getRand(1, 50);
-	double tmp = b * b / (4 * a);
-
-	if (dice <= 2)
-	{
-		do
-		{
-			c = getRand(1, 20);
-		} while (c >= tmp);			// 方程无解	0 < b ^ 2 - 4 a c => c < b ^ 2 / 4 a
-	}
-	else if (dice <= 40)
-	{
-		do
-		{
-			c = getRand(1, 20);
-		} while (c <= tmp);			// 方程两个解	0 > b ^ 2 - 4 a c => c > b ^ 2 / 4 a
-	}
-	else
-	{
-		c = tmp;			// 方程一个解	0 = b ^ 2 - 4 a c
-	}
-}
 
 /// <summary>
 /// 返回 "ax^2 + bx + c = 0" 字符串
 /// </summary>
-string TwoEquation::toEquationStr()
+string TwoEquation::toString()
 {
 	// 创建字符串流
 	std::ostringstream equation;
@@ -78,30 +51,51 @@ string TwoEquation::toEquationStr()
 		equation << " - " << -c;
 	}
 
-	// 返回最终的字符串
+	equation << " = 0 ";
+
 	return equation.str();
 }
 
-bool TwoEquation::getFlag()
+/// <summary>
+/// 接收一个 带有二元一次方程根 的信息的对象，判断该对象提供的数据是否能解开 this 二元一次方程
+/// </summary>
+/// <param name="root"> 根对象 </param>
+/// <returns> 成功解开该方程返回 true，否则false </returns>
+bool TwoEquation::trySolving(TwoEquationRoot root)
 {
-	return flag;
+	return this->root.equals(root);
+}
+
+//===========================================
+
+bool TwoEquation::getRealRootNum()
+{
+	return root.getRealRootNum();
 }
 
 double TwoEquation::getX1()
 {
-	return x1;
+	return root.getX1();
 }
 
 double TwoEquation::getX2()
 {
-	return x2;
+	return root.getX2();
 }
 
 /// <summary>
-/// 解开这个方程
+/// 获取该方程的根
 /// </summary>
-/// <returns> 方程有解返回true，否则false </returns>
-bool TwoEquation::solving()
+/// <returns> 包含方程实数根个数及具体实数根的根对象 </returns>
+TwoEquationRoot TwoEquation::getRoots()
+{
+	return root;
+}
+
+/// <summary>
+/// 解开这个方程，初始化该方程的根
+/// </summary>
+void TwoEquation::solving()
 {
 	//二元一次次求根公式为x=(-b±√(b^2-4ac))/(2a)
 	//△ = b ^ 2 - 4ac
@@ -109,18 +103,16 @@ bool TwoEquation::solving()
 
 	if (delta > 0)
 	{
-		x1 = (-b + sqrt(delta)) / (2 * a);
-		x2 = (-b - sqrt(delta)) / (2 * a);
+		root.setRoot( (-b + sqrt(delta)) / (2 * a), (-b - sqrt(delta)) / (2 * a) );
 	}
 	else if (delta == 0)
 	{
-		x1 = x2 = (-b + sqrt(delta)) / 2 * a;
+		root.setRoot( -b / (2 * a) );
 	}
 	else if (delta < 0)
 	{
-		return flag = false;
+		root.emptyRoot();
 	}
-	return flag = true;
 }
 
 

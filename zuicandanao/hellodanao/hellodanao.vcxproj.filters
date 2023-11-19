@@ -24,12 +24,18 @@
     <ClCompile Include="TwoEquation.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="TwoEquationRoot.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Tool.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="TwoEquation.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="TwoEquationRoot.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
