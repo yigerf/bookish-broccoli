@@ -1,2 +1,7 @@
-﻿  TwoEquation.cpp
+﻿  AnswerView.cpp
+D:\aaa_studies\Program\code\c\zuicandanao\hellodanao\AnswerView.cpp(75,12): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+D:\aaa_studies\Program\code\c\zuicandanao\hellodanao\AnswerView.cpp(88,31): warning C4244: “参数”: 从“double”转换到“int”，可能丢失数据
+D:\aaa_studies\Program\code\c\zuicandanao\hellodanao\AnswerView.cpp(88,21): warning C4244: “参数”: 从“double”转换到“int”，可能丢失数据
+D:\aaa_studies\Program\code\c\zuicandanao\hellodanao\AnswerView.cpp(95,32): warning C4244: “参数”: 从“double”转换到“int”，可能丢失数据
+D:\aaa_studies\Program\code\c\zuicandanao\hellodanao\AnswerView.cpp(95,21): warning C4244: “参数”: 从“double”转换到“int”，可能丢失数据
   hellodanao.vcxproj -> D:\aaa_studies\Program\code\c\zuicandanao\x64\Debug\hellodanao.exe

@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AnswerView.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Tool.cpp" />
     <ClCompile Include="TwoEquation.cpp" />
@@ -148,6 +149,7 @@
     <ClInclude Include="Tool.h" />
     <ClInclude Include="TwoEquation.h" />
     <ClInclude Include="TwoEquationRoot.h" />
+    <ClInclude Include="AnswerView.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
