@@ -1,19 +1,12 @@
 ﻿#include <iostream>
-#include <math.h>
-#include <ctime>
-#include <cstdlib>
-#include <string>
-#include <iostream>
-#include <sstream>
-#include "TwoEquation.h"
-#include "Tool.h"
 #include "AnswerView.h"
 
 using namespace std;
 
 int main()
 {
-	mainFun();
+	AnswerView& av = AnswerView::getSingleton();
+	av.mainFun();		// 这里获取单例然后开始答题.
 	system("pause");
 }
 

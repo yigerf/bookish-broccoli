@@ -1,4 +1,5 @@
 #include "TwoEquationRoot.h"
+#include "Tool.h"
 
 TwoEquationRoot::TwoEquationRoot(double x1, double x2)
 {
@@ -44,11 +45,9 @@ bool TwoEquationRoot::equals(TwoEquationRoot root)
 {
 	if (root.getRealRootNum() == realRootNum)
 	{
-		if ( (root.getX1() == x1 && root.getX2() == x2) || 
-			 (root.getX1() == x2 && root.getX2() == x1) )
-		{
-			return true;
-		}
+		int tolerable = 0.001;		// 比较小数点前 3 位
+		return areAlmostEqual(root.getX1(), x1, 0.001) && areAlmostEqual(root.getX2(), x2, 0.001) ||
+			areAlmostEqual(root.getX1(), x2, 0.001) && areAlmostEqual(root.getX2(), x1, 0.001);
 	}
 	return false;
 }

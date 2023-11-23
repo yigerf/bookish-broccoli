@@ -10,7 +10,7 @@
 #include "TwoEquationRoot.h"
 #include "AnswerView.h"
 
-void mainFun()
+void AnswerView::mainFun()
 {
 
 	TwoEquation equation = randEquation();
@@ -21,6 +21,7 @@ void mainFun()
 	cout << "提示：" << endl;
 	cout << "\t若方程只有一个解就连续填两次相同值." << endl;
 	cout << "\t若方程无解则填“无解”，不考虑虚数解." << endl;
+	cout << "\t四舍五入后保留小数点后 3 位." << endl;
 	cout << "请输入第一个解：" << endl;
 	cin >> inStrX1;
 
@@ -70,7 +71,7 @@ void mainFun()
 /// 随机生成一个二元一次函数
 /// </summary>
 /// <returns>二元一次函数对象</returns>
-TwoEquation randEquation()
+TwoEquation AnswerView::randEquation()
 {
 	srand(time(0));		// 这里初始化随机数函数，不然不给用，有疑问去问本贾尼·斯特劳斯特卢普
 
@@ -101,4 +102,14 @@ TwoEquation randEquation()
 	}
 	TwoEquation equ(a, b, c);
 	return equ;
+}
+
+AnswerView& AnswerView::getSingleton() 
+{
+	static AnswerView answerView;
+	return answerView;
+}
+
+AnswerView::AnswerView()
+{
 }

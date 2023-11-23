@@ -2,8 +2,17 @@
 #define ANSWER_VIEW
 #include "TwoEquation.h"
 
-void mainFun();
-TwoEquation randEquation();
+class AnswerView
+{
+public:
+	void mainFun();
+	TwoEquation randEquation();
+	static AnswerView& getSingleton();
+
+private:
+	AnswerView();
+};
+
 
 #endif // !ANSWER_VIEW
 
